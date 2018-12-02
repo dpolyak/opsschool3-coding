@@ -1,0 +1,86 @@
+Please write a program that does the following:
+Read an input parameter with a JSON file name (for instance my_list.json)
+The JSON will be in the following format (see below)
+
+ Dictionary that will contain one nested hash and one list
+ the hash will be of pairs of names and ages (name will be the key and age will be the value)
+ the array will be a list of ages
+
+the program will go over the list of people and divide them to buckets based on their ages
+each bucket will hold all the names of the people with age between the partition key and the following partition key
+bucket  ‘20-25’ will hold a list of name that their age is between 20 and 25 (not including)
+this data will them be saved in a yaml format in a file with the same name as the input file with changed extension.
+
+bonus - if there is someone that doesn't fall into any of the baskets it will create a new bucket based on the oldest person and add all the people that fall into this bucket
+
+Sample input file:
+{
+    "ppl_ages":{
+       "Dan": 102,
+        "Dana": 2,
+        "Danail": 5,
+        "Dandre": 29,
+        "Dane": 75,
+        "Daneel": 22,
+        "Danell": 57,
+        "Dangelo": 35,
+        "Danger": 11,
+        "Danial": 25,
+        "Danian": 82,
+        "Daniel": 45,
+        "Daniele": 23,
+        "Danielius": 76,
+        "Daniil": 23,
+        "Danijel": 75,
+        "Danilo": 25,
+        "Daniyal": 45,
+        "Danner": 25,
+        "Dannie": 65,
+        "Dannin": 25,
+        "Danny": 52,
+        "Dante": 57,
+        "Dantes": 21,
+        "Danuel": 47,
+        "Dănuț": 82,
+        "Danyal": 90,
+        "Danyl": 55
+	},
+	"buckets": [20,40,25,11]
+}
+
+Sample output file:
+----
+11-20:
+- :Danger
+25-40:
+- :Dandre
+- :Daneel
+- :Dangelo
+- :Danial
+- :Daniele
+- :Daniil
+- :Danilo
+- :Danner
+- :Dannin
+- :Dantes
+20-25: []
+-11:
+- :Dana
+- :Danail
+40-102:
+- :Dan
+- :Dane
+- :Danell
+- :Danian
+- :Daniel
+- :Danielius
+- :Danijel
+- :Daniyal
+- :Dannie
+- :Danny
+- :Dante
+- :Danuel
+- :Dănuț
+- :Danyal
+- :Danyl
+
